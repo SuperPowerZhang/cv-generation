@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./App.css";
 import "./init.css";
 import { Layout } from "antd";
@@ -19,18 +19,23 @@ const infoInitialValue: InfoType = {
   contact: null,
   basic: null,
 };
+export type displayFormType = boolean;
+const initialDisplayFormValue = true;
 export const InfoContext = React.createContext(infoInitialValue);
 
 function App() {
   const [formState, setformState] = useState(infoInitialValue);
+  const [displayForm, setDisplayForm] = useState(initialDisplayFormValue);
   const { Header, Footer, Sider, Content } = Layout;
   return (
     <div className='App'>
       <Header>在下方填写信息，即可在右边预览会生成的样子</Header>
       <Layout>
-        <Sider>
-          <Form state={formState} setState={setformState}></Form>
-        </Sider>
+        {displayForm && (
+          <Sider>
+            <Form state={formState} setState={setformState}></Form>
+          </Sider>
+        )}
         <Content>
           <InfoContext.Provider value={formState}>
             <RealContent></RealContent>
@@ -38,7 +43,16 @@ function App() {
         </Content>
       </Layout>
       <Footer>
-        <Foot></Foot>
+        <Foot
+          isShowForm={displayForm}
+          hideForm={useCallback(() => {
+            console.log(77777);
+            setDisplayForm(false);
+          }, [setDisplayForm])}
+          showForm={useCallback(() => {
+            setDisplayForm(true);
+          }, [setDisplayForm])}
+        ></Foot>
       </Footer>
     </div>
   );

@@ -3,7 +3,7 @@ import BasicInfo from "./forms/BasicInfo";
 import "./form.css";
 
 type ContentType = {
-  state: string;
+  state: object | null;
   setState: () => void;
 };
 

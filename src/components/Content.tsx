@@ -1,15 +1,11 @@
 import React from "react";
+import ContactTemplate from "./templates/Contact";
+import "./Content.css";
 
-type ContentType = {
-  state: string;
-  setState: () => void;
-};
-
-function Content(props: ContentType) {
-  const { state } = props;
+function Content() {
   return (
     <>
-      <div>{state}</div>
+      <ContactTemplate />
     </>
   );
 }

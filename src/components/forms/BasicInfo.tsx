@@ -1,28 +1,50 @@
 import React from "react";
 import { Input } from "antd";
-import { BASIC_INFO } from "../../constants/INFO";
+import { BASIC_INFO, CONTACT_INFO } from "../../constants/INFO";
+import { BasicType, ContactType, InfoType } from "../../App";
 
-type ContentType = {
-  state: string;
-  setState: () => void;
-};
-
-function BasicInfo(props: ContentType) {
+function BasicInfo(props: {
+  state: InfoType;
+  setState: (newState: InfoType) => void;
+}) {
   const { state, setState } = props;
-  const basicForm = BASIC_INFO.map((item) => {
+  const contactForm = CONTACT_INFO.map((item) => {
     return (
-      <div key={item} className='item-wrap'>
-        <span className='tag'>{item}:</span>
+      <div key={item.key} className='item-wrap'>
+        <span className='tag'>{item.val}:</span>
         <Input
           type='primary'
           onInput={(e) => {
-            setState(e.target.value);
+            const contactNew: ContactType = { ...state.contact };
+            contactNew[item.key] = e.target?.value;
+            setState({ ...state, contact: contactNew });
           }}
         ></Input>
       </div>
     );
   });
-  return <>{basicForm}</>;
+  const basicForm = BASIC_INFO.map((item) => {
+    return (
+      <div key={item.key} className='item-wrap'>
+        <span className='tag'>{item.val}:</span>
+        <Input
+          type='primary'
+          onInput={(e) => {
+            const basicNew = { ...state.basic };
+            basicNew[item.key] = e.target?.value;
+            console.log(111, basicNew);
+            setState({ ...state, basic: basicNew });
+          }}
+        ></Input>
+      </div>
+    );
+  });
+  return (
+    <>
+      {contactForm}
+      {basicForm}
+    </>
+  );
 }
 
 export default BasicInfo;

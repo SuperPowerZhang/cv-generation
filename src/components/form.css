@@ -1,0 +1,13 @@
+.item-wrap{
+  border: 1px solid red;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.item-wrap .tag{
+  width: 80px;
+  text-align: right;
+  margin-right: 12px;
+}

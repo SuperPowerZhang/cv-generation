@@ -1,10 +1,11 @@
 import React from "react";
 import BasicInfo from "./forms/BasicInfo";
+import { InfoType } from "../App";
 import "./form.css";
 
 type ContentType = {
-  state: object | null;
-  setState: () => void;
+  state: InfoType;
+  setState: React.Dispatch<React.SetStateAction<InfoType>>;
 };
 
 function Form(props: ContentType) {

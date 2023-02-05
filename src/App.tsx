@@ -39,7 +39,7 @@ function App() {
       <Header>在下方填写信息，即可在右边预览会生成的样子</Header>
       <Layout>
         {displayForm && (
-          <Sider>
+          <Sider theme='light'>
             <Form state={formState} setState={setformState}></Form>
           </Sider>
         )}
@@ -53,7 +53,6 @@ function App() {
         <Foot
           isShowForm={displayForm}
           hideForm={useCallback(() => {
-            console.log(77777);
             setDisplayForm(false);
           }, [setDisplayForm])}
           showForm={useCallback(() => {

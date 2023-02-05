@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "antd";
 import { BASIC_INFO, CONTACT_INFO } from "../../constants/INFO";
-import { BasicType, ContactType, InfoType } from "../../App";
+import { BasicType, ContactType, InfoType, HTMLElementEvent } from "../../App";
 
 function BasicInfo(props: {
   state: InfoType;
@@ -15,8 +15,10 @@ function BasicInfo(props: {
         <Input
           type='primary'
           onInput={(e) => {
+            const element = e.currentTarget as HTMLInputElement;
+            const value = element.value;
             const contactNew: ContactType = { ...state.contact };
-            contactNew[item.key] = e.target?.value;
+            contactNew[item.key] = value;
             setState({ ...state, contact: contactNew });
           }}
         ></Input>
@@ -30,9 +32,10 @@ function BasicInfo(props: {
         <Input
           type='primary'
           onInput={(e) => {
-            const basicNew = { ...state.basic };
-            basicNew[item.key] = e.target?.value;
-            console.log(111, basicNew);
+            const element = e.currentTarget as HTMLInputElement;
+            const value = element.value;
+            const basicNew: BasicType = { ...state.basic };
+            basicNew[item.key] = value;
             setState({ ...state, basic: basicNew });
           }}
         ></Input>

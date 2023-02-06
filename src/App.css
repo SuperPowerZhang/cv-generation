@@ -48,3 +48,9 @@
   flex-direction: row;
   justify-content: flex-start;
 }
+
+.header{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

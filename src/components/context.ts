@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { InfoType } from "./type";
+import { InfoType } from "../constants/type";
 
 export const infoInitialValue: InfoType = {
   contact: null,
@@ -7,4 +7,4 @@ export const infoInitialValue: InfoType = {
 };
 export const InfoContext = createContext(infoInitialValue);
 
-export const themeContext = createContext("light");
+export const ThemeContext = createContext("light");

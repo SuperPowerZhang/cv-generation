@@ -5,30 +5,9 @@ import { Layout } from "antd";
 import Foot from "./components/Footer";
 import Form from "./components/Form";
 import RealContent from "./components/Content";
-
-export type ContactType = {
-  mobile?: string | undefined;
-  mail?: string | undefined;
-} | null;
-export type BasicType = {
-  gender?: string | undefined;
-  name?: string | undefined;
-  age?: string | undefined;
-  expectation?: string | undefined;
-  advantage?: string | undefined;
-  specialization?: string | undefined;
-} | null;
-export type InfoType = {
-  contact: ContactType;
-  basic: BasicType;
-};
-const infoInitialValue: InfoType = {
-  contact: null,
-  basic: null,
-};
 export type displayFormType = boolean;
 const initialDisplayFormValue = true;
-export const InfoContext = React.createContext(infoInitialValue);
+import { infoInitialValue, InfoContext } from "./components/context";
 
 function App() {
   const [formState, setformState] = useState(infoInitialValue);
